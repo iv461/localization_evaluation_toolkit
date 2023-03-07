@@ -1,6 +1,26 @@
 # graph plotter
 
-import matplotlib.pyplot as plt
+use_pgf_backend = True
+if use_pgf_backend:
+    import matplotlib as mpl
+    from matplotlib.backends.backend_pgf import FigureCanvasPgf
+    mpl.backend_bases.register_backend('pdf', FigureCanvasPgf)
+
+    import matplotlib.pyplot as plt
+
+
+    # Use the seborn style
+    #plt.style.use('seaborn')
+    plt.rcParams.update({
+        "font.family": "serif",  # use serif/main font for text elements
+        "font.size": 18,
+        "text.usetex": True,     # use inline math for ticks
+        #"text.latex.unicode": True, # the workaround, https://github.com/matplotlib/matplotlib/issues/5234
+        "pgf.rcfonts": False     # don't setup fonts from rc parameters
+        })
+else: 
+    import matplotlib.pyplot as plt 
+
 import matplotlib.patches as patches
 from matplotlib.figure import Figure
 from mpl_toolkits.mplot3d import axes3d, Axes3D
@@ -304,7 +324,8 @@ def save_df(ref_pack: RefDataPack, res_packs: List[ResDataPack], opt_param: OptP
 
 def save_figures(figs: Dict[str, Figure], opt_param: OptParam) -> None:
     for name, fig in figs.items():
-        fig.savefig(f"{opt_param.output_directory}/{name}.{opt_param.save_extension_type}")
+        format_to_use = "pgf" if use_pgf_backend else "png"
+        fig.savefig(f"{opt_param.output_directory}/{name}.{format_to_use}", format=format_to_use)
 
 def save(ref_pack: RefDataPack, res_packs: List[ResDataPack], figs: Dict[str, Figure], opt_param: OptParam) -> None:
     # save dataframes

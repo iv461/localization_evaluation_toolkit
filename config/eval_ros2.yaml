@@ -1,0 +1,79 @@
+Reference:
+  ## Auxiliary info
+  label: gnss
+  type: 1 # [0]: csv, [1]: ros2bag
+  path: /home/ivo/Downloads/rosbags/penzing_localization_rosbag2_2023_02_21-15_50_18
+
+  ## Rosbag info
+  topic_name: /sensing/gnss/pose_with_covariance
+  storage_id: sqlite3
+  serialization_format: cdr
+
+  ## TF
+  tf_time: 0   # [s]
+  tf_x: 0      # [m]
+  tf_y: 0      # [m]
+  tf_z: 0      # [m]
+  tf_roll: 0   # [rad]
+  tf_pitch: 0  # [rad]
+  tf_yaw: 0    # [rad]
+  inv_roll: 1  # 1 or -1
+  inv_pitch: 1 # 1 or -1
+  inv_yaw: 1   # 1 or -1
+
+  # Display ellipse (put 2D covariance in result file)
+  display_ellipse: true # use PoseWithCovarianceStamped tyep topic in result data
+
+Result:
+  ## Auxiliary info
+  label: localization_output
+  type: 1 # [0]: csv, [1]: ros2bag
+  path: /home/ivo/Downloads/rosbags/penzing_localization_rosbag2_2023_02_21-15_50_18
+
+  ## Rosbag info
+  topic_name: /localization/pose_estimator/pose_with_covariance
+  storage_id: sqlite3
+  serialization_format: cdr
+
+  ## TF
+  tf_time: 0   # [s]
+  tf_x: 0      # [m]
+  tf_y: 0      # [m]
+  tf_z: 0      # [m]
+  tf_roll: 0   # [rad]
+  tf_pitch: 0  # [rad]
+  tf_yaw: 0    # [rad]
+  inv_roll: 1  # 1 or -1
+  inv_pitch: 1 # 1 or -1
+  inv_yaw: 1   # 1 or -1
+
+  # Display ellipse (put 2D covariance in result file)
+  display_ellipse: false # use PoseWithCovarianceStamped tyep topic in result data  
+
+############
+## Option ##
+############
+
+# Horizontal axis
+axis_type: 0   # [0]:time, [1]:distance
+degree_type: 1 # [0]:radian, [1]:degree
+
+# Trajectory graph dilution
+dilution_step: 10 # at least 1, the larger the sparser for better performance
+
+# Trajectory graph numbering
+progress_info: 0 # [0]:no display, [1]: number, [2]:time, [3]:ros time, [4]:distance
+interval: 0      # progress_info is [2]:per second, [3]:per second, [4]:per meter
+
+# Font
+title_font_size: 14 
+label_font_size: 10
+ticks_font_size: 8
+
+# Save
+save_figures: true
+save_extension_type: png # without "."
+save_dataframe: true
+output_directory: /home/ivo/dev/localization_evaluation_toolkit/results/
+
+use_lerp: false
