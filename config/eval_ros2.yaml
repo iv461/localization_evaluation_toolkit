@@ -66,9 +66,9 @@ progress_info: 0 # [0]:no display, [1]: number, [2]:time, [3]:ros time, [4]:dist
 interval: 0      # progress_info is [2]:per second, [3]:per second, [4]:per meter
 
 # Font
-title_font_size: 14 
-label_font_size: 10
-ticks_font_size: 8
+title_font_size: 18 
+label_font_size: 18
+ticks_font_size: 12
 
 # Save
 save_figures: true

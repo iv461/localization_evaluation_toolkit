@@ -1,6 +1,8 @@
 import sys
 import yaml
 
+import matplotlib.pyplot as plt
+
 sys.dont_write_bytecode = True
 
 from util import configer, packer, plotter
@@ -23,3 +25,4 @@ if __name__ == "__main__":
     print("Save data...", end="", flush=True)
     plotter.save(ref_pack, res_packs, figs, opt_param)
     print("Completed!!")
+    plt.show()
