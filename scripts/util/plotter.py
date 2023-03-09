@@ -358,9 +358,19 @@ def save_df(ref_pack: RefDataPack, res_packs: List[ResDataPack], opt_param: OptP
 
 def save_figures(figs: Dict[str, Figure], opt_param: OptParam) -> None:
     for name, fig in figs.items():
-        format_to_use = "pgf" if use_pgf_backend else "png"
-        fig.savefig(
-            f"{opt_param.output_directory}/{name}.{format_to_use}", format=format_to_use)
+
+        opt_param.save_extension_type = [opt_param.save_extension_type] if not isinstance(opt_param.save_extension_type, list) else opt_param.save_extension_type
+        for types_to_save in opt_param.save_extension_type:
+            format_to_use = types_to_save
+            if not use_pgf_backend and format_to_use == "pgf":
+                print(f"Wont save to pgf: You have to enable it in plotter.py!")
+                continue
+            try: 
+                fig.savefig(
+                    f"{opt_param.output_directory}/{name}.{format_to_use}", format=format_to_use)
+            except Exception as ex:
+                print(f"Could not save to {format_to_use}: {ex}")
+
 
 
 def save(ref_pack: RefDataPack, res_packs: List[ResDataPack], figs: Dict[str, Figure], opt_param: OptParam) -> None:

@@ -2,7 +2,7 @@ Reference:
   ## Auxiliary info
   label: gnss
   type: 1 # [0]: csv, [1]: ros2bag
-  path: /home/ivo/Downloads/rosbags/penzing_localization_rosbag2_2023_02_21-15_50_18
+  path: /home/ivo/Downloads/rosbags/2022-10-12-13-49-31-with-aw-localization
 
   ## Rosbag info
   topic_name: /sensing/gnss/pose_with_covariance
@@ -28,10 +28,10 @@ Result:
   ## Auxiliary info
   label: localization_output
   type: 1 # [0]: csv, [1]: ros2bag
-  path: /home/ivo/Downloads/rosbags/penzing_localization_rosbag2_2023_02_21-15_50_18
+  path: /home/ivo/Downloads/rosbags/2022-10-12-13-49-31-with-aw-localization
 
   ## Rosbag info
-  topic_name: /localization/pose_estimator/pose_with_covariance
+  topic_name: /localization/pose_with_covariance
   storage_id: sqlite3
   serialization_format: cdr
 
@@ -72,7 +72,7 @@ ticks_font_size: 12
 
 # Save
 save_figures: true
-save_extension_type: png # without "."
+save_extension_type: [pgf, png, pdf] # without "."
 save_dataframe: true
 output_directory: /home/ivo/dev/localization_evaluation_toolkit/results/
 
